@@ -6,8 +6,9 @@
 int main()
 {
 	char *msg="Hello aishwarya";
-	char buf[20];
+	char buf[SIZE];
 	int fd[2];
+	memset(buf,'\0',SIZE);
 	int status = pipe(fd);
 	if (status==-1)
 	{
@@ -19,4 +20,3 @@ int main()
 	printf("No. of bytes read= %d and message=%s",rd,buf);
 	return 0;
 }
-
