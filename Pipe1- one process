@@ -1,0 +1,22 @@
+#include<stdio.h>
+#include<string.h>
+#include<stdlib.h> //for exit method
+#include<unistd.h> //for pipe,write, read methods
+#define SIZE 30
+int main()
+{
+	char *msg="Hello aishwarya";
+	char buf[20];
+	int fd[2];
+	int status = pipe(fd);
+	if (status==-1)
+	{
+		printf("Could not create the pipe\n");
+		exit(1);
+	}
+	int wr = write(fd[1],msg,strlen(msg));
+	int rd = read(fd[0], buf ,strlen(msg));
+	printf("No. of bytes read= %d and message=%s",rd,buf);
+	return 0;
+}
+
